@@ -11,11 +11,11 @@
     <title>{{ config('app.name', 'PAIAS') }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ URL::to('public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
-    <link href="{{ URL::to('public/css/shop-home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shop-home.css') }}" rel="stylesheet">
 
 
   </head>
@@ -57,11 +57,11 @@
 
         <div class="col-lg-3">
 
-          <h1 class="my-4">Shop Name</h1>
+          <h1 class="my-4">PAIAS</h1>
           <div class="list-group">
             <a href="#" class="list-group-item">Category 1</a>
             <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 4</a>
+            <a href="#" class="list-group-item">Category 3</a>
           </div>
 
         </div>
@@ -91,8 +91,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{{ URL::to('public/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ URL::to('public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
   </body>
 

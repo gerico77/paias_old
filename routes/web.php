@@ -1,7 +1,7 @@
 <?php
 // Route::get('/', function () { return redirect('/admin/home'); });
 // Route::get('/', function () { return view('index'); });
-Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/', 'HomeController@index');
 Route::get('course/{slug}', ['uses' => 'CoursesController@show', 'as' => 'courses.show']);
 
 // Authentication Routes...

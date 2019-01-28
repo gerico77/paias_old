@@ -65,7 +65,16 @@ class QuestionsController extends Controller
         $request = $this->saveFiles($request);
         $question = Question::create($request->all());
 
-
+        for ($q = 1; $q <= 4; $q++) {
+            $option = $request->input('option_text_' . $q, '');
+            if ($option != '') {
+                QuestionsOption::create([
+                    'question_id' => $question->id,
+                    'option_text' => $option,
+                    'correct' => $request->input('correct_' . $q)
+                ]);
+            }
+        }
 
         return redirect()->route('admin.questions.index');
     }

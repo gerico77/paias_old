@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('score', trans('quickadmin.questions.fields.score').'*', ['class' => 'control-label']) !!}
-                    {!! Form::number('score', old('score'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::number('score', old('score', 1), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('score'))
                         <p class="help-block">
@@ -52,6 +52,37 @@
             
         </div>
     </div>
+    @for ($question=1; $question<=4; $question++)
+     <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('option_text_' . $question, trans('quickadmin.questions-options.fields.option-text').'*', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('option_text_' . $question, old('option_text'), ['class' => 'form-control ', 'rows' => 3]) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('option_text_' . $question))
+                        <p class="help-block">
+                            {{ $errors->first('option_text_' . $question) }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('correct_' . $question, trans('quickadmin.questions-options.fields.correct').'', ['class' => 'control-label']) !!}
+                    {!! Form::hidden('correct_' . $question, 0) !!}
+                    {!! Form::checkbox('correct_' . $question, 1, old('correct', false), []) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('correct_' . $question))
+                        <p class="help-block">
+                            {{ $errors->first('correct_' . $question) }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    @endfor
 
     {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}

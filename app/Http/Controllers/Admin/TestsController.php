@@ -46,8 +46,10 @@ class TestsController extends Controller
             return abort(401);
         }
         
-        $courses = \App\Course::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $lessons = \App\Lesson::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $courses = \App\Course::ofProfessor()->get();
+        $courses_ids = $courses->pluck('id');
+        $courses = $courses->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $lessons = \App\Lesson::whereIn('course_id', $courses_ids)->get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
         $questions = \App\Question::get()->pluck('question', 'id');
 
 
@@ -85,11 +87,12 @@ class TestsController extends Controller
         if (! Gate::allows('test_edit')) {
             return abort(401);
         }
-        
-        $courses = \App\Course::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $lessons = \App\Lesson::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $questions = \App\Question::get()->pluck('question', 'id');
 
+        $courses = \App\Course::ofProfessor()->get();
+        $courses_ids = $courses->pluck('id');
+        $courses = $courses->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $lessons = \App\Lesson::whereIn('course_id', $courses_ids)->get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $questions = \App\Question::get()->pluck('question', 'id');
 
         $test = Test::findOrFail($id);
 
