@@ -67,12 +67,8 @@
         </div>
         <!-- /.col-lg-3 -->
 
-        <div class="col-lg-9">
+        <div class="col-lg-9 mt-3">
           @yield('main')
-
-          </div>
-          <!-- /.row -->
-
         </div>
         <!-- /.col-lg-9 -->
 

@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $courses = Course::where('published', 1)->orderBy('id', 'desc')->get();
+        // dd($courses);
         return view('index')->with('courses', $courses);
     }
 }
